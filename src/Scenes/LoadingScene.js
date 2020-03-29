@@ -67,7 +67,7 @@ export default class LoadingScene extends Phaser.Scene
 
     //Load Home Scene
     this.time.addEvent({
-                      delay: 2500,
+                      delay: 4200,
                       repeat: 0,
                       callback: function(){
                         this.scene.start('Home');
