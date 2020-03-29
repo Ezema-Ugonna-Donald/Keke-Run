@@ -160,7 +160,7 @@ export default class UIScene extends Phaser.Scene
         });
       }
 
-      if (this.cashCollected <= this.cashToWin && this.cashCollected % this.cashToWin < 50)
+      if (this.cashCollected < this.cashToWin && this.cashCollected % this.cashToWin < 50)
       {
         this.isWinner = false;
         this.gameScene.scene.pause();
