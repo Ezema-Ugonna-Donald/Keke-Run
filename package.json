@@ -4,7 +4,7 @@
   "description": "A Phaser 3 Project Template",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/base.js",
+    "start": "node server.js",
     "build": "webpack"
   },
   "repository": {
