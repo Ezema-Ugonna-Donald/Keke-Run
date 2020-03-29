@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "body-parser":"*",
     "express-generator": "^4.16.1",
     "phaser": "^3.20.1"
   }
