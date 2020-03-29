@@ -4,8 +4,8 @@
   "description": "A Phaser 3 Project Template",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config webpack/base.js",
-    "build": "webpack --config webpack/prod.js"
+    "start": "node server.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -30,10 +30,11 @@
     "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.10.3",
+    "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "express-generator": "^4.16.1",
     "phaser": "^3.20.1"
   }
