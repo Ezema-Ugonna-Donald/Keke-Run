@@ -122,7 +122,7 @@ export default class UIScene extends Phaser.Scene
     });
 
     this.gameScene.events.on('GameOver', () => {
-      if (this.cashCollected >= this.cashToWin && this.cashCollected % this.cashToWin >= 50)
+      if (this.cashCollected >= this.cashToWin && this.cashCollected % this.cashToWin >= 0)
       {
         this.gameScene.scene.pause();
 
