@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node server.js",
-    "build": "webpack"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -34,7 +34,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express-generator": "^4.16.1",
     "phaser": "^3.20.1"
   }
 }
