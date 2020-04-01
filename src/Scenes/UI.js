@@ -25,27 +25,6 @@ export default class UIScene extends Phaser.Scene
     let gameW = this.sys.game.config.width;
     let gameH = this.sys.game.config.height;
 
-    // Game End UI
-    // Message
-    let text = this.add.text(gameW/2, gameH/2, this.textMsg, {
-      font: '70px Arial',
-      fill: '#ffffff'
-    });
-    text.setOrigin(0.5, 0.5);
-    text.depth = 1;
-
-    let gameUI = this.add.graphics();
-
-    // Button
-    let textBtn = this.add.text(gameW/2, gameH/1.5, this.textBtnMsg, {
-      font: '16px Arial',
-      fill: '#ffffff'
-    }).setInteractive();
-    textBtn.setOrigin(0.5, 0.5);
-    textBtn.depth = 1;
-
-    let btn = this.add.graphics();
-
     // get a reference to the game scene
     this.gameScene = this.scene.get('Game');
 
@@ -55,6 +34,27 @@ export default class UIScene extends Phaser.Scene
       this.scoreText.setScrollFactor(0);
       this.levelText = this.add.text(16, 64, `Level: ${this.level}`, { fontSize: '35px', fill: '#fff' });
       this.levelText.setScrollFactor(0);
+
+      // Game End UI
+      // Message
+      this.text = this.add.text(gameW/2, gameH/2, this.textMsg, {
+        font: '70px Arial',
+        fill: '#ffffff'
+      });
+      this.text.setOrigin(0.5, 0.5);
+      this.text.depth = 1;
+
+      this.gameUI = this.add.graphics();
+
+      // Button
+      this.textBtn = this.add.text(gameW/2, gameH/1.5, this.textBtnMsg, {
+        font: '16px Arial',
+        fill: '#ffffff'
+      }).setInteractive();
+      this.textBtn.setOrigin(0.5, 0.5);
+      this.textBtn.depth = 1;
+
+      this.btn = this.add.graphics();
 
       this.upBtn = this.add.sprite(590, 80, 'up').setInteractive();
       this.upBtn.setOrigin(0.5, 0.5);
@@ -83,7 +83,7 @@ export default class UIScene extends Phaser.Scene
         this.upBtn.on('pointerdown', () => {
           // Emit Game Over event
           this.events.emit('UpButton');
-          console.log('UP');
+          // console.log('UP');
         });
 
         this.downBtn.on('pointerdown', () => {
@@ -127,72 +127,76 @@ export default class UIScene extends Phaser.Scene
         this.gameScene.scene.pause();
 
         this.textMsg = 'Great Job, You Win!!';
-        text.setText(this.textMsg);
-        text.setVisible(true);
+        this.text.setText(this.textMsg);
+        // text.setVisible(true);
 
         this.textBtnMsg = 'Next Level';
-        textBtn.setText(this.textBtnMsg);
-        textBtn.setVisible(true);
+        this.textBtn.setText(this.textBtnMsg);
+        // textBtn.setVisible(true);
 
         this.graphicFill = 0.7;
         this.graphicFillBtn = 1;
 
         this.isWinner = true;
-        gameUI.fillStyle(0x000000, this.graphicFill);
-        gameUI.fillRect(gameW/2 - text.width/2 - 10, gameH/2 - text.height/2 - 10, text.width + 20, text.height + 140);
-        gameUI.setVisible(true);
+        this.gameUI.fillStyle(0x000000, this.graphicFill);
+        this.gameUI.fillRect(gameW/2 - this.text.width/2 - 10, gameH/2 - this.text.height/2 - 10, this.text.width + 20, this.text.height + 140);
+        // this.gameUI.setVisible(true);
 
-        btn.fillStyle(0x5BE272, this.graphicFillBtn);
-        btn.fillRect(gameW/2 - textBtn.width/2 - 10, gameH/1.5 - textBtn.height/2 - 10, textBtn.width + 20, textBtn.height + 20);
-        btn.setVisible(true);
+        this.btn.fillStyle(0x5BE272, this.graphicFillBtn);
+        this.btn.fillRect(gameW/2 - this.textBtn.width/2 - 10, gameH/1.5 - this.textBtn.height/2 - 10, this.textBtn.width + 20, this.textBtn.height + 20);
+        // btn.setVisible(true);
 
         // Restart Game
-        textBtn.on('pointerdown', () => {
+        this.textBtn.on('pointerdown', () => {
           // this.gameScene.scene.resume();
-          text.setVisible(false);
-          textBtn.setVisible(false);
-          gameUI.setVisible(false);
-          btn.setVisible(false);
-          this.levelText.setVisible(false);
+          this.textMsg = '';
+          this.textBtnMsg = '';
+          this.text.destroy();
+          this.textBtn.destroy();
+          this.gameUI.destroy();
+          this.btn.destroy();
+          this.scoreText.destroy();
+          this.levelText.destroy();
           this.level++;
           this.cashToWin += 350;
           this.gameScene.scene.restart();
         });
       }
-
-      if (this.cashCollected < this.cashToWin && this.cashCollected % this.cashToWin < 50)
+      else if (this.cashCollected < this.cashToWin)
       {
         this.isWinner = false;
         this.gameScene.scene.pause();
 
         this.textMsg = 'O boy, you lose!!';
-        text.setText(this.textMsg);
-        text.setVisible(true);
+        this.text.setText(this.textMsg);
+        // text.setVisible(true);
 
         this.textBtnMsg = 'Restart';
-        textBtn.setText(this.textBtnMsg);
-        textBtn.setVisible(true);
+        this.textBtn.setText(this.textBtnMsg);
+        // textBtn.setVisible(true);
 
         this.graphicFill = 0.7;
         this.graphicFillBtn = 1;
 
-        gameUI.fillStyle(0x000000, this.graphicFill);
-        gameUI.fillRect(gameW/2 - text.width/2 - 10, gameH/2 - text.height/2 - 10, text.width + 20, text.height + 140);
-        gameUI.setVisible(true);
+        this.gameUI.fillStyle(0x000000, this.graphicFill);
+        this.gameUI.fillRect(gameW/2 - this.text.width/2 - 10, gameH/2 - this.text.height/2 - 10, this.text.width + 20, this.text.height + 140);
+        // gameUI.setVisible(true);
 
-        btn.fillStyle(0xFFBC42, this.graphicFillBtn);
-        btn.fillRect(gameW/2 - textBtn.width/2 - 10, gameH/1.5 - textBtn.height/2 - 10, textBtn.width + 20, textBtn.height + 20);
-        btn.setVisible(true);
+        this.btn.fillStyle(0xFFBC42, this.graphicFillBtn);
+        this.btn.fillRect(gameW/2 - this.textBtn.width/2 - 10, gameH/1.5 - this.textBtn.height/2 - 10, this.textBtn.width + 20, this.textBtn.height + 20);
+        // btn.setVisible(true);
 
         // Restart Game
-        textBtn.on('pointerdown', () => {
+        this.textBtn.on('pointerdown', () => {
           this.cashCollected = 0;
-          text.setVisible(false);
-          textBtn.setVisible(false);
-          gameUI.setVisible(false);
-          btn.setVisible(false);
-          this.scoreText.setVisible(false);
-          this.levelText.setVisible(false);
+          this.textMsg = '';
+          this.textBtnMsg = '';
+          this.text.destroy();
+          this.textBtn.destroy();
+          this.gameUI.destroy();
+          this.btn.destroy();
+          this.scoreText.destroy();
+          this.levelText.destroy();
           this.gameScene.scene.restart();
         });
       }

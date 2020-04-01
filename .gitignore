@@ -11,4 +11,5 @@ Thumbs.db
 
 # Build
 /npm-debug.log
+/dist
 .gitignore
