@@ -39,6 +39,7 @@
     "express-generator": "^4.16.1",
     "kind-of": "^6.0.3",
     "minimist": "^1.2.3",
-    "phaser": "^3.20.1"
+    "phaser": "^3.20.1",
+    "serialize-javascript": "^2.1.2"
   }
 }
