@@ -163,15 +163,15 @@ export default class GameScene extends Phaser.Scene
   }
 
   resize(width, height) {
-    if (width === undefined)
-    {
-      width = this.sys.game.config.width;
-    }
+    // if (width === undefined)
+    // {
+    //   width = this.sys.game.config.width;
+    // }
 
-    if (height === undefined)
-    {
-      height = this.sys.game.config.height;
-    }
+    // if (height === undefined)
+    // {
+    //   height = this.sys.game.config.height;
+    // }
 
     this.camera.resize(width, height);
   }
