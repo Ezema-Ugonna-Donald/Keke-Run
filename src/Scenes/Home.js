@@ -10,11 +10,11 @@ export default class HomeScene extends Phaser.Scene
 // called once after the preload ends
   create () {
     // set background asset
-    let bg = this.add.sprite(0, 0, 'background').setInteractive();
+    let bg = this.add.sprite(0, 0, 'newBackground').setInteractive();
     bg.setOrigin(0, 0);
 
-    let bgGround = this.add.sprite(0, 565, 'ground');
-    bgGround.setScale(1.5);
+    // let bgGround = this.add.sprite(0, 565, 'ground');
+    // bgGround.setScale(1.5);
 
     // Get Game width and height
     let gameW = this.sys.game.config.width;
