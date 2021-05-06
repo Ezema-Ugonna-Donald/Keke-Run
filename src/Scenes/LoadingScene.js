@@ -43,8 +43,9 @@ export default class LoadingScene extends Phaser.Scene
     // load assets
 
     // this.load.spritesheet('player', 'assets/playerFramesKA3.png', { frameWidth: 32, frameHeight: 99 });
+    this.load.image('newBackground', 'assets/kekerunWorld.png');
     this.load.image('background', 'assets/skyWorldKA2.png');
-    this.load.image('beam', 'assets/platform.png');
+    // this.load.image('beam', 'assets/platform.png');
     this.load.image('ground', 'assets/kaGround2.png');
 
     // Buttons
