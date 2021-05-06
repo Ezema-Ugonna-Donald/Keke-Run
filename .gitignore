@@ -13,4 +13,4 @@ Thumbs.db
 /npm-debug.log
 /dist
 .gitignore
-node_modules
+node_modules/
