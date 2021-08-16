@@ -9,9 +9,11 @@ export default class LoadingScene extends Phaser.Scene
 
 // load assets
   preload () {
-
+    
+//   this.load.image('logo', 'assets/GameIntro2.png');
+    
   // show logo
-  let logo = this.add.sprite(this.sys.game.config.width/2, 280, 'logo');
+//   let logo = this.add.sprite(this.sys.game.config.width/2, 280, 'logo');
 
   // progress bar background
   let bgBar = this.add.graphics();
@@ -67,14 +69,15 @@ export default class LoadingScene extends Phaser.Scene
     // createAnimation ();
 
     //Load Home Scene
-    this.time.addEvent({
-                      delay: 2500,
-                      repeat: 0,
-                      callback: function(){
-                        this.scene.start('Home');
-                      },
-                      callbackScope: this
-    });
+    this.scene.start('Home');
+//     this.time.addEvent({
+//                       delay: 2500,
+//                       repeat: 0,
+//                       callback: function(){
+//                         this.scene.start('Home');
+//                       },
+//                       callbackScope: this
+//     });
 
     // bg.on('pointerdown', function(){
     //   this.scene.start('Boot');
