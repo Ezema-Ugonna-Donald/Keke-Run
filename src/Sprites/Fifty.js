@@ -21,6 +21,11 @@ export default class Fifty extends Phaser.Physics.Arcade.Image {
     this.move();
   }
 
+  update ()
+  {
+    this.move ()
+  }
+
   move ()
   {
      this.setCollideWorldBounds(true);

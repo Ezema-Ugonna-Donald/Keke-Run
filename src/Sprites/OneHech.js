@@ -23,7 +23,7 @@ export default class OneHech extends Phaser.Physics.Arcade.Image {
 
   update ()
   {
-
+    this.move ()
   }
 
   move ()

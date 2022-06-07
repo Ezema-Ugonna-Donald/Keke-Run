@@ -23,7 +23,7 @@ export default class Agbero extends Phaser.Physics.Arcade.Image {
 
   update ()
   {
-
+    this.move ()
   }
 
   move ()
